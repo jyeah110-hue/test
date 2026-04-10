@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>대남병원 클론</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- [출처] ChatGPT -->
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: #eef2f7;
+        }
+
+        .navbar {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 10px;
+        }
+
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            margin: 0 15px;
+        }
+
+        .hero {
+            background: #eef2f7;
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 300;
+            color: #666;
+        }
+
+        .hero h1 strong {
+            display: block;
+            font-weight: 700;
+            color: #000;
+        }
+
+        .hero p {
+            color: #777;
+            margin-top: 20px;
+        }
+
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .slider-control {
+            margin-top: 30px;
+        }
+
+        .service-section {
+            background: white;
+            padding: 60px 0;
+        }
+
+        .service-card {
+            border: 1px solid #d6e3f0;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background: white;
+            min-height: 350px;
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            background: #eef2f7;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        #service {
+            background-color: white;
+        }
+
+        #sub-img {
+            background-color: #d6e3f0;
+        }
+    </style>
+
+    <script>
+        //[출처] JavaScript 강의
+        var num = 1;
+
+        function sliding(direct) {
+            if (direct) {
+                if (num == 3) {
+                    return;
+                }
+
+                num++;
+            }
+            else {
+                if (num == 1) {
+                    return;
+                }
+
+                num--;
+            }
+
+            var imgTag = document.getElementById("hero-photo");
+            imgTag.setAttribute("src", "hero_" + num + ".jpg");
+            imgTag.setAttribute("alt", num);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- [출처] 전체적인 구조 ChatGPT에서 가져옴 -->
+
+    <!-- 네비게이션 -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <img src="logo.jpg">
+
+            <div class="collapse navbar-collapse justify-content-center" id="nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">병원소개</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">진료안내</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">이용안내</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">정신건강정보</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">커뮤니티</a></li>
+                </ul>
+            </div>
+            <!-- [출처] 부트스트랩 -->
+            <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 히어로 -->
+    <section class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+
+                <!-- 텍스트 -->
+                <div class="col-lg-6">
+                    <small class="text-primary fw-bold">DAENAM HOSPITAL</small>
+
+                    <h1>
+                        몸과 마음을 치료하는
+                        <strong>환자 중심의 의료 서비스</strong>
+                    </h1>
+
+                    <p>
+                        사랑과 정성이 가득한 가족같은 분위기로 어려움을 겪는 환자분들의
+                        행복하고 건강한 삶을 위해 항상 노력합니다.
+                    </p>
+                </div>
+
+                <!-- 이미지 -->
+                <div class="col-lg-6 text-center">
+                    <img src="hero_1.JPG" class="hero-img" id="hero-photo">
+                </div>
+
+                <!-- 슬라이드 버튼(부트스트랩) -->
+                <div class="slider-control">
+                    <button class="carousel-control-prev" type="button" onclick="sliding(0)">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" onclick="sliding(1)">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 서비스 -->
+    <section class="service-section">
+        <div class="container">
+            <div class="row g-4 align-items-stretch">
+
+                <div class="col-lg-3">
+                    <div class="row align-items-center h-100" id="sub-img">
+                        <div class="col-6">
+                            <img src="sub.JPG" class="img-fluid">
+                        </div>
+                        <div class="col-6">
+                            <div class="text-left">
+                                <small class="text-primary fw-bold">SERVICE</small>
+
+                                <h2>
+                                    대남병원의
+                                    <strong>의료 서비스</strong>
+                                </h2>
+
+                                <p>
+                                    언제나 열린 마음으로 환자분들과 함께하며
+                                    안전하고 편안한 의료 서비스를 제공합니다.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="row g-4 flex-nowrap">
+                        <div class="col-4">
+                            <div class="service-card text-start">
+                                <div class="icon-circle">🏥</div>
+                                <h5><strong>Hospital Introduction</strong></h5>
+                                <h5>병원소개</h5>
+                                <p>
+                                    연혁과 대남병원의 미션과 비젼,
+                                    병원 인테리어를 확인해보세요.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="service-card text-start">
+                                <div class="icon-circle">📋</div>
+                                <h5><strong>Use Information</strong></h5>
+                                <h5>이용안내</h5>
+                                <p>
+                                    입원생활과 제증명 발급안내, <br>
+                                    비급여 항목을 확인해 보세요.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-4">
+                            <div class="service-card text-start">
+                                <div class="icon-circle">❤️</div>
+                                <h5><strong>Mental Health Information</strong></h5>
+                                <h5>정신건강정보</h5>
+                                <p>
+                                    조현병, 기분장애, 알코올 사용장애 등
+                                    자가진단을 통해 확인해 보세요.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 게시판 -->
+    <section class="contact-section py-5">
+        <div class="container">
+            <h4 class="mb-4">문의 게시판</h4>
+
+            <div class="card p-4 mb-4">
+                <input type="text" id="name" class="form-control mb-2" placeholder="이름">
+                <textarea id="message" class="form-control mb-2" rows="3" placeholder="문의 내용을 입력하세요"></textarea>
+                <button class="btn btn-primary">등록</button>
+            </div>
+
+            <div id="post-list"></div>
+        </div>
+    </section>
+</body>
+
+</html>
